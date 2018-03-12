@@ -1,5 +1,5 @@
 {
-    "name": "cakebake/yii2-actionlog",
+    "name": "grptx/yii2-actionlog",
     "description": "Logs user actions like create, read, update, delete and custom",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","log","activeRecord","actionlog"],
@@ -8,6 +8,10 @@
         {
             "name": "cakebake (Jens A.)",
             "email": "cakebake.dev@gmail.com"
+        },
+        {
+            "name": "Roberto Rossetti",
+            "email": "r.rossetti@melogra.no"
         }
     ],
     "autoload": {
