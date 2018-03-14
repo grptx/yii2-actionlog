@@ -2,6 +2,7 @@
 
 namespace cakebake\actionlog\model;
 
+use yii\base\ErrorException;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
@@ -58,15 +59,20 @@ class ActionLog extends ActiveRecord
      */
     public static function add($status = null, $message = null, $uID = 0)
     {
-        $model = Yii::createObject(__CLASS__);
-        $model->user_id = ((int)$uID !== 0) ? (int)$uID : (int)$model->getUserID();
-        $model->user_remote = !empty($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
-        $model->action = Yii::$app->requestedAction->id;
-        $model->category = Yii::$app->requestedAction->controller->id;
-        $model->status = $status;
-        $model->message = ($message !== null) ? serialize($message) : null;
+    	try {
 
-        return $model->save();
+		    $model = Yii::createObject(__CLASS__);
+		    $model->user_id = ((int)$uID !== 0) ? (int)$uID : (int)$model->getUserID();
+		    $model->user_remote = !empty($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+		    $model->action = Yii::$app->requestedAction->id;
+		    $model->category = Yii::$app->requestedAction->controller->id;
+		    $model->status = $status;
+		    $model->message = ($message !== null) ? serialize($message) : null;
+
+		    return $model->save();
+	    } catch (ErrorException $e) {
+    		return false;
+	    }
     }
 
     /**
