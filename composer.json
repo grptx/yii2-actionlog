@@ -2,7 +2,13 @@
     "name": "grptx/yii2-actionlog",
     "description": "Logs user actions like create, read, update, delete and custom",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension","log","activeRecord","actionlog"],
+    "keywords": [
+        "yii2",
+        "extension",
+        "log",
+        "activeRecord",
+        "actionlog"
+    ],
     "license": "LGPL-V3",
     "authors": [
         {
@@ -14,6 +20,10 @@
             "email": "r.rossetti@melogra.no"
         }
     ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "~2.0.6"
+    },
     "autoload": {
         "psr-4": {
             "cakebake\\actionlog\\": ""
